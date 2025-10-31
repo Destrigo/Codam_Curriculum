@@ -1,0 +1,58 @@
+#!/bin/bash
+# =====================================================
+# 🧠  Push_Swap test script by ChatGPT x Tamacho
+# =====================================================
+
+# Percorso eseguibili
+PUSH_SWAP=./push_swap
+CHECKER=./checker_linux
+
+# Numero di test da eseguire per ogni gruppo
+TESTS=9
+
+# Controlla che push_swap e checker esistano
+if [ ! -x "$PUSH_SWAP" ]; then
+    echo "❌ Errore: $PUSH_SWAP non trovato o non eseguibile!"
+    exit 1
+fi
+if [ ! -x "$CHECKER" ]; then
+    echo "❌ Errore: $CHECKER non trovato o non eseguibile!"
+    exit 1
+fi
+
+echo "========================================="
+echo " 🚀 Testing push_swap with 100 and 500 args"
+echo "========================================="
+echo ""
+
+for SIZE in 2 3 4 5 10 100 500
+do
+    echo "🔹 Testing with $SIZE random numbers..."
+    TOTAL_MOVES=0
+    OK_COUNT=0
+
+    for ((i=1; i<=TESTS; i++))
+    do
+        ARG=$(shuf -i 1-$SIZE -n $SIZE)
+        MOVES=$($PUSH_SWAP $ARG | wc -l)
+        RESULT=$($PUSH_SWAP $ARG | $CHECKER $ARG)
+
+        if [ "$RESULT" = "OK" ]; then
+            OK_COUNT=$((OK_COUNT + 1))
+        fi
+        TOTAL_MOVES=$((TOTAL_MOVES + MOVES))
+
+        echo "  🧩 Test $i: $MOVES moves ($RESULT)"
+    done
+
+    AVG_MOVES=$((TOTAL_MOVES / TESTS))
+    echo ""
+    echo "✅ Correct: $OK_COUNT / $TESTS"
+    echo "📊 Average moves: $AVG_MOVES"
+    echo "-----------------------------------------"
+done
+
+echo "✨ Test completati!"
+
+# ARG=$(shuf -i 1-500 -n 500); ./push_swap $ARG | wc -l
+# ARG=$(shuf -i 1-100 -n 100); ./push_swap $ARG | wc -l
