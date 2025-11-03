@@ -6,7 +6,7 @@
 /*   By: mtaranti <mtaranti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 00:44:44 by mtaranti          #+#    #+#             */
-/*   Updated: 2025/11/03 05:11:43 by mtaranti         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:22:50 by mtaranti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    pipex(int f1, int f2, char **argv, char **envp)
     pid_t child2;    
 	
     if (pipe(pp) == -1)
-	    return (-1);
+	    return ;
     child1 = fork();
     if (child1 < 0)
         return (perror("Fork: "));
@@ -48,7 +48,6 @@ int  main(int args, char **argv, char **envp)
     fd2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
     if (fd1 < 0 || fd2 < 0)
         return (-1);
-	
     pipex(fd1, fd2, argv, envp);
     return (0);
 }

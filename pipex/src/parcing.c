@@ -6,7 +6,7 @@
 /*   By: mtaranti <mtaranti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 04:33:11 by mtaranti          #+#    #+#             */
-/*   Updated: 2025/11/03 05:07:06 by mtaranti         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:26:00 by mtaranti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*find_command(char **paths, char *cmd_input)
 
 	cmd = parce_command(cmd_input);
 	full_path = NULL;
+	i = 0;
 	while (paths[i])
 	{
 		tmp = ft_strjoin(paths[i], "/");

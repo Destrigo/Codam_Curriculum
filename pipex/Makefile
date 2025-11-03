@@ -2,7 +2,10 @@ CC = cc
 HEADER = pipex.h
 CFLAGS = -Wall -Wextra -Werror -Iincludes
 NAME = pipex
-OBJS =  files/main.o					\
+OBJS =  src/main.o					\
+		src/childs.o				\
+		src/helpers.o				\
+		src/parcing.o				\
 
 all: ${NAME}
 
