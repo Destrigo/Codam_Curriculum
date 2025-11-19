@@ -6,7 +6,7 @@
 /*   By: mtaranti <mtaranti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 16:15:22 by mtaranti          #+#    #+#             */
-/*   Updated: 2025/10/23 10:10:09 by mtaranti         ###   ########.fr       */
+/*   Updated: 2025/11/03 22:27:57 by mtaranti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ char	*get_next_line(int fd)
 // int main(void)
 // {
 // 	int fd;
-//  char *res;
+//  	char *res;
 // 	//test 1
-// 	fd = open("files/empty", O_RDWR);
+// 	fd = open("test.txt", O_RDWR);
 // 	printf("%s", (res = get_next_line(fd)));
 // 	printf("\n\n");
 // 	close(fd);
